@@ -19,6 +19,10 @@ function AuthPage(props) {
         setError(null)
     },[error])
 
+    useEffect(()=>{
+        window.M.updateTextFields()
+    },[])
+
     const changeHandler = event => {
         setForm({...form, [event.target.name]: event.target.value})
     }

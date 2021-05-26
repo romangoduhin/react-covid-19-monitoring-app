@@ -4,6 +4,7 @@ import 'materialize-css'
 import {useRoutes} from "./routes";
 import {useAuth} from "./hooks/useAuth";
 import {AuthContext} from "./contexts/AuthContext";
+import NavBar from './components/NavBar'
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         login, logout, token, userId, isAuthorized
       }}>
         <BrowserRouter>
+        {isAuthorized && <NavBar/>}
           <div className="container"> {routes}</div>
         </BrowserRouter>
       </AuthContext.Provider>
