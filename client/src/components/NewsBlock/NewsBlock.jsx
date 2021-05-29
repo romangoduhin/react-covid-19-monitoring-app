@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import s from "./NewsBlock.module.css";
+import s from "./NewsBlock.module.scss";
 import {useDispatch, useSelector} from "react-redux";
 import newsAPI from "../../services/newsAPI";
 import newsNotFoundImg from "../../img/camera.png";
@@ -8,21 +8,19 @@ import {
     setTotalResultsActionCreator,
 } from "../../redux/news-reducer";
 
+
 function NewsBlock() {
     const {
         covidNews,
         totalCount,
         pageSize
-    } = useSelector(
-        (state) => state.news
-    );
+    } = useSelector((state) => state.news);
 
     const dispatch = useDispatch();
-
     const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(() => {
-        const getNews = async () => {
+        const getNews = async() => {
             const {articles, totalResults} = await newsAPI.getNews(
                 "covid",
                 currentPage,
@@ -40,7 +38,9 @@ function NewsBlock() {
         pages.push(i);
     }
 
-    if (covidNews.length === 0) return <div> loading</div>;
+    if(covidNews.length === 0) return <div className="progress">
+        <div className="indeterminate"></div>
+    </div>
 
     return (
         <div className={s.blockWrapper}>
@@ -68,13 +68,12 @@ function NewsBlock() {
             <div className={s.pageList}>
                 {pages.map((page, i) => {
                     return (
-                        <span
-                            className={currentPage === page ? s.selectPage : s.listItem}
-                            key={i}
-                            onClick={() => {
-                                setCurrentPage(page);
-                            }}
-                        >
+                        <span className={currentPage === page ? s.selectPage : s.listItem}
+                              key={i}
+                              onClick={() => {
+                                  window.scrollTo(0, 0)
+                                  setCurrentPage(page)
+                              }}>
               {page}
             </span>
                     );

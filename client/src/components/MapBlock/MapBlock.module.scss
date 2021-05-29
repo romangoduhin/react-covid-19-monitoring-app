@@ -1,10 +1,13 @@
 .blockWrapper {
-    background-color: #f1f1f1;
+    border-top: 1px solid black;
     grid-area: map;
     height: 600px;
-}
+    background-color: #f1f1f1;
 
-.map {
+  .map {
     height: 100%;
     width: 100%;
+  }
 }
+
+

@@ -1,12 +1,19 @@
 import React from "react";
-import Map from "./Map/Map";
+import s from "./MapPage.module.scss";
+
 
 const MapPage = () => {
-  return (
-    <div>
-      <Map />
-    </div>
-  );
+    return (
+        <div className={s.blockWrapper}>
+            <iframe
+                className={s.map}
+                src="https://coronavirus-monitor.ru/map"
+                scrolling="no"
+            >
+                Your browser doesnt support this map
+            </iframe>
+        </div>
+    );
 };
 
 export default MapPage;

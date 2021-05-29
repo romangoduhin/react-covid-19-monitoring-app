@@ -45,7 +45,9 @@ function Statistic() {
   }, [count]);
 
   if (summaryCovidStat.length === 0 && globalCovidStat.length === 0)
-    return <div> loading</div>;
+    return <div className="progress">
+      <div className="indeterminate"></div>
+    </div>
 
   return (
     <div className={s.blockWrapper}>

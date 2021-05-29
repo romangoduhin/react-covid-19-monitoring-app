@@ -1,11 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
-import 'materialize-css';
 import request from "../../axios";
 import {useMessage} from "../../hooks/useMessage";
 import {AuthContext} from "../../contexts/AuthContext";
+import s from "./AuthPage.module.scss"
 
 
-function AuthPage(props) {
+function AuthPage() {
     const auth = useContext(AuthContext)
     const message = useMessage()
     const [form, setForm] = useState({
@@ -14,14 +14,14 @@ function AuthPage(props) {
     });
     const [error, setError] = useState(null);
 
-    useEffect(()=>{
+    useEffect(() => {
         message(error)
         setError(null)
-    },[error])
+    }, [error])
 
-    useEffect(()=>{
+    useEffect(() => {
         window.M.updateTextFields()
-    },[])
+    }, [])
 
     const changeHandler = event => {
         setForm({...form, [event.target.name]: event.target.value})
@@ -39,8 +39,7 @@ function AuthPage(props) {
     const loginHandler = async() => {
         try {
             const data = await request.post('/api/auth/login', {...form})
-            console.log("DATA",data)
-            auth.login(data.data.token,data.data.userId)
+            auth.login(data.data.token, data.data.userId)
             message(data.data.message)
         } catch (e) {
             setError(e.response.data.message)
@@ -48,42 +47,44 @@ function AuthPage(props) {
     }
 
     return (
-        <div className="row">
-            <div className="col s6 offset-s3">
-                <div className="card green accent-2">
-                    <div className="card-content white-text">
-                        <span className="card-title">Authorization</span>
-                        <div>
-                            <div className="input-field">
-                                <input
-                                    placeholder="Input email"
-                                    id="email"
-                                    type="text"
-                                    name="email"
-                                    onChange={changeHandler}
-                                />
-                                <label htmlFor="email">Email</label>
-                            </div>
-                            <div className="input-field">
-                                <input
-                                    placeholder="Input password"
-                                    id="password"
-                                    type="text"
-                                    name="password"
-                                    onChange={changeHandler}
-                                />
-                                <label htmlFor="password">Password</label>
-                            </div>
-                        </div>
+        <div className={s.authWrapper}>
+            <div className={s.authBlock}>
+                <h5><i className="material-icons">hearing</i>Covid listener</h5>
+                <div className={s.inputsWrapper}>
+                    <div className="input-field">
+                        <input
+                            className={s.input}
+                            placeholder="Input email"
+                            id="email"
+                            type="text"
+                            name="email"
+                            onChange={changeHandler}
+                        />
+                        <label htmlFor="email">Email</label>
                     </div>
-                    <div className="card-action">
-                        <button className='btn yellow green lighten-4 black-text' onClick={loginHandler} style={{marginRight: '20px'}}
-                                black-text>Sign in
-                        </button>
-                        <button className='btn yellow green lighten-4 black-text' onClick={registrationHandler}>Sign
-                            up
-                        </button>
+
+                    <div className="input-field">
+                        <input
+                            className={s.input}
+                            placeholder="Input password"
+                            id="password"
+                            type="text"
+                            name="password"
+                            onChange={changeHandler}
+                        />
+                        <label htmlFor="password">Password</label>
                     </div>
+                </div>
+
+                <div className={s.buttons}>
+                    <button className='btn green darken-1  white-text' onClick={loginHandler}
+                            style={{marginRight: '20px'}}
+                            >Sign in
+                    </button>
+
+                    <button className='btn green darken-1  white-text' onClick={registrationHandler}>Sign
+                        up
+                    </button>
                 </div>
             </div>
         </div>

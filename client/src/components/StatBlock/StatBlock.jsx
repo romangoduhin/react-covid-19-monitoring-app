@@ -1,27 +1,30 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
 import CovidAPI from "../../services/covidAPI";
-import s from "./StatBlock.module.css";
+import s from "./StatBlock.module.scss";
 import {
     setGlobalStatActionCreator,
     setSummaryStatActionCreator,
 } from "../../redux/covid-reducer";
 
+
 function StatBlock() {
-    const { summaryCovidStat } = useSelector((state) => state.covid);
+    const {summaryCovidStat} = useSelector((state) => state.covid);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const getStat = async () => {
-            const { Countries, Global } = await CovidAPI.getGlobalStatistics();
+        const getStat = async() => {
+            const {Countries, Global} = await CovidAPI.getGlobalStatistics();
             dispatch(setSummaryStatActionCreator(Global));
             dispatch(setGlobalStatActionCreator(Countries));
         };
         getStat();
     }, []);
 
-    if (summaryCovidStat.length === 0) return <div> loading</div>;
+    if(summaryCovidStat.length === 0) return <div className="progress">
+        <div className="indeterminate"></div>
+    </div>
 
     return (
         <div className={s.blockWrapper}>

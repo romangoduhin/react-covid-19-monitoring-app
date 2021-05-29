@@ -1,5 +1,6 @@
 import React from "react";
-import s from "./MapBlock.module.css";
+import s from "./MapBlock.module.scss";
+
 
 function MapBlock() {
     return (
