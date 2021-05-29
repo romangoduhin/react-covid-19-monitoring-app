@@ -1,0 +1,29 @@
+.wrapperContent {
+   display: flex;
+    flex-direction: column;
+    width: 100%;
+
+}
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.map {
+    margin-top: -35px;
+}
+
+.stats {
+    margin-top: -45px;
+}
+
+.column {
+    flex-basis: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.news {
+    flex-basis: 40%;
+}
+

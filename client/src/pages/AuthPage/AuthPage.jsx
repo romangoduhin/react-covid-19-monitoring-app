@@ -1,8 +1,8 @@
 import React, {useContext, useEffect, useState} from 'react';
 import 'materialize-css';
-import request from "../axios";
-import {useMessage} from "../hooks/useMessage";
-import {AuthContext} from "../contexts/AuthContext";
+import request from "../../axios";
+import {useMessage} from "../../hooks/useMessage";
+import {AuthContext} from "../../contexts/AuthContext";
 
 
 function AuthPage(props) {

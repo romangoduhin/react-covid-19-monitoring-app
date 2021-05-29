@@ -1,0 +1,66 @@
+.blockWrapper {
+  height: 1200px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.urlToImage {
+  width: 900px;
+  height: 600px;
+}
+
+.newsList {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title {
+  font-family: Arial, Helvetica, Verdana, sans-serif;
+  text-decoration: none;
+  color: black;
+}
+
+a {
+  text-decoration: none;
+}
+
+.title:hover {
+  transform: scale(0.95);
+  color: crimson;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.infWrapper {
+  font-size: 40px;
+}
+
+.itemWrapper {
+  display: flex;
+  width: 100%;
+}
+
+.pageList {
+  height: 100px;
+  text-align: center;
+}
+
+.selectPage {
+  color: #a6e198;
+  font-size: 70px;
+  margin-left: 20px;
+}
+
+.listItem {
+  font-size: 80px;
+  margin-left: 20px;
+}
+
+.listItem:hover {
+  transform: scale(1.1);
+  color: crimson;
+  transition: all 0.7s;
+  cursor: pointer;
+}
