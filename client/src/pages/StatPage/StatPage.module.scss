@@ -1,0 +1,49 @@
+.blockWrapper {
+    height: 1200px;
+    width: 100%;
+
+    .sortTitle {
+        font-size: 30px;
+    }
+
+    .statBlock {
+        margin-top: 20px;
+        margin-left: 200px;
+
+        width: 80%;
+        display: flex;
+
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .item {
+            font-family: Arial, Helvetica, Verdana, sans-serif;
+            width: 30%;
+            height: 100%;
+            margin-bottom: 50px;
+            border: 4px #4caf50;
+            border-style: solid;
+
+            .Country {
+                text-align: center;
+                font-size: 50px;
+            }
+
+            .infBlock {
+                margin-top: 60px;
+                font-size: 20px;
+            }
+
+            &:hover {
+                transform: scale(0.9);
+                color: crimson;
+                transition: all 0.7s;
+            }
+        }
+    }
+}
+
+
+
+
+
